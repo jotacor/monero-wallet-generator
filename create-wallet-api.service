@@ -1,0 +1,18 @@
+[Unit]
+StopWhenUnneeded=true
+After=network.target
+
+[Service]
+User=monero
+WorkingDirectory=/home/monero/walletgenerator
+ExecStart=/home/monero/venv/bin/python create-wallet-api.py
+Restart=always
+StandardInput=null
+StandardOutput=null
+StandardError=null
+SyslogIdentifier=%n
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+Alias=create-wallet-api.service
